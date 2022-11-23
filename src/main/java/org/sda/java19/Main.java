@@ -92,6 +92,6 @@ public class Main {
 
     private static Product updateProduct() {
         //Need to display all the products and then ask user to which product to update.
-
+        return null;
     }
 }
