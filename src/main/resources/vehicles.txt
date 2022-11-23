@@ -1,0 +1,13 @@
+Car, Mercedes, C180, 20000, 220, AUTOMATIC, SEDAN
+Motorcycle, Honda, CBR1000, 15000, 280, CHOPPER
+Car, Mercedes, C230, 25000, 240, AUTOMATIC, COUPE
+Car, Volkswagen, Passat, 18000, 200, MANUAL, SEDAN
+Motorcycle, BMW, R1200, 12000, 250, CRUISER
+Tractor, BMW, P180, 28000, 3500
+Motorcycle, Yamaha, Z300, 11000, 230, CHOPPER
+Car, BMW, 3, 22500, 240, MANUAL, WAGON
+Motorcycle, Honda, NC750, 8000, 200, ENDURO
+Tractor, John Deer, T200, 31000, 5000
+Car, Honda, Civic, 13000, 180, MANUAL, COUPE
+Bicycle, Giant, T1X, 1200
+Tractor, Ferarri, X23, unknown, 2000
