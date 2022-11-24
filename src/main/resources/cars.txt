@@ -1,0 +1,5 @@
+Car(super=Motorcycle(super=Vehicle(brand=Mercedes, model=C180, price=20000), topSpeed=220.0, vehicleShape=SEDAN), vehicleTransmission=AUTOMATIC)
+Car(super=Motorcycle(super=Vehicle(brand=Mercedes, model=C230, price=25000), topSpeed=240.0, vehicleShape=COUPE), vehicleTransmission=AUTOMATIC)
+Car(super=Motorcycle(super=Vehicle(brand=Volkswagen, model=Passat, price=18000), topSpeed=200.0, vehicleShape=SEDAN), vehicleTransmission=MANUAL)
+Car(super=Motorcycle(super=Vehicle(brand=BMW, model=3, price=22500), topSpeed=240.0, vehicleShape=WAGON), vehicleTransmission=MANUAL)
+Car(super=Motorcycle(super=Vehicle(brand=Honda, model=Civic, price=13000), topSpeed=180.0, vehicleShape=COUPE), vehicleTransmission=MANUAL)
