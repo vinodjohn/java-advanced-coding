@@ -1,5 +1,12 @@
 package org.sda.java19;
 
+import org.sda.java19.models.Group;
+import org.sda.java19.models.Student;
+import org.sda.java19.models.Trainer;
+
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * SDA Scheduler
  *
@@ -37,6 +44,57 @@ package org.sda.java19;
  */
 public class Main {
     public static void main(String[] args) {
+        List<Student> studentList = getInitialStudents();
+        List<Trainer> trainerList = getInitialTrainers();
+        List<Group> groupList = getInitialGroups();
+
+        assignStudentsToGroup(groupList);
+    }
+
+    private static List<Student> getInitialStudents() {
+        Student student = new Student();
+        student.setFirstName("Vinod");
+        student.setLastName("John");
+        student.setDateOfBirth(LocalDate.of(2000, 12, 18));
+        student.setHasPreviousJavaKnowledge(true);
+
+        //To create 14 other students with different data, make sure there is no duplicates
+
+        return List.of(student);
+    }
+
+    private static List<Trainer> getInitialTrainers() {
+        Trainer trainer = new Trainer();
+        trainer.setLastName("Tony");
+        trainer.setFirstName("Stark");
+        trainer.setDateOfBirth(LocalDate.of(1938, 2, 12));
+        trainer.setAuthorized(true);
+
+        // TO DO: create 2 other trainers with different data, make sure there is no duplicates
+        return List.of(trainer);
+    }
+
+    private static List<Group> getInitialGroups() {
+        Group group = new Group();
+        group.setName("Java19");
+        group.setTrainer(getInitialTrainers().get(0));
+
+        Group group2 = new Group();
+        group2.setName("Java14");
+        group2.setTrainer(getInitialTrainers().get(2));
+
+        Group group3 = new Group();
+        group3.setName("Java15");
+        group3.setTrainer(getInitialTrainers().get(1));
+
+        Group group4 = new Group();
+        group4.setName("Java10");
+        group4.setTrainer(getInitialTrainers().get(2));
+
+        return List.of(group, group2, group3, group4);
+    }
+
+    private static void assignStudentsToGroup(List<Group> groupList) {
 
     }
 }
