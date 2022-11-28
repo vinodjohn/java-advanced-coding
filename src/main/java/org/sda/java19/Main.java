@@ -31,7 +31,7 @@ package org.sda.java19;
  * Display all students grouped by trainer that teaches to them (eg. Trainer1 - stud1, stud3, stud4; Trainer2 - stud2, stud 10) - regardless of the group they're part of (If you were to store this information in a data structure what would you use?)
  * Display all students with previous java knowledge
  * Display the group with the highest number of students with no previous java knowledge
- * Remove all the students younger than 20 from all groups
+ * Remove all the students younger than 20 from all groups. Display the groups before and after removal.
  *
  * @author Vinod John
  */
