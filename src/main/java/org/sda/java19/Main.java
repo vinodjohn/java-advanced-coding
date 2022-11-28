@@ -12,6 +12,7 @@ import org.sda.java19.util.Data;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -62,8 +63,33 @@ public class Main {
                 productService.addProduct(addProduct());
                 break;
             case 1: //Update a product
+                productService.updateProduct(updateProduct());
+                break;
+            case 2:
+                productService.deleteProductByName(deleteProduct());
+                break;
+            case 3:
+                displayAllProducts(productService.getAllProducts());
+                break;
+            case 4:
+                //display summary
+                break;
+            case 5:
+                //sum of products and prices
+                break;
+
         }
     }
+
+    private static void displayAllProducts(List<Product> products) {
+        products.forEach(System.out::println);
+    }
+
+    private static String deleteProduct() {
+        // Display all the products and then ask user which product he wants to delete.
+        return null;
+    }
+
     private static int getOption() {
         Scanner scanner = new Scanner(System.in);
         // User should be able to: add, display all of the details, update, delete an item
