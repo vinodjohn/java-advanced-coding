@@ -1,31 +1,34 @@
 package org.sda.java19;
 
+import org.sda.java19.exceptions.MaximumNumberOfStudentsReachedException;
 import org.sda.java19.models.Group;
+import org.sda.java19.models.Person;
 import org.sda.java19.models.Student;
 import org.sda.java19.models.Trainer;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * SDA Scheduler
- *
+ * <p>
  * Create a class hierarchy:
  * Person.java - firstname
- *             - lastname
- *             - dateOfBirth
+ * - lastname
+ * - dateOfBirth
  * Trainer.java (extends Person) - isAuthorized (boolean)
  * Student.java (extends Person) - hasPreviousJavaKnowledge (boolean)
- *
- *
+ * <p>
+ * <p>
  * Create a Group class which has
- *
+ * <p>
  * name (Java19Remote, Java20Remote, etc)
  * one trainer
  * a list of students
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * Manually initialize 15 students; 4 groups and 3 trainers;
  * Store all students in a list; all groups in a list; all trainers in a list;
  * Assign a trainer to each group
@@ -43,12 +46,27 @@ import java.util.List;
  * @author Vinod John
  */
 public class Main {
-    public static void main(String[] args) {
+    private static final int MAXIMUM_ALLOWED_STUDENTS = 5;
+
+    public static void main(String[] args) throws MaximumNumberOfStudentsReachedException {
         List<Student> studentList = getInitialStudents();
         List<Trainer> trainerList = getInitialTrainers();
         List<Group> groupList = getInitialGroups();
 
-        assignStudentsToGroup(groupList);
+        assignStudentsToGroup(groupList, studentList);
+        assignTrainerToGroup(groupList, trainerList);
+
+        Tasks tasks = new Tasks();
+        tasks.sortByLastName(groupList);
+        tasks.displayGroupWithMaxStudents(groupList);
+        tasks.sortByLastName(groupList);
+
+
+
+
+
+
+
     }
 
     private static List<Student> getInitialStudents() {
@@ -77,24 +95,47 @@ public class Main {
     private static List<Group> getInitialGroups() {
         Group group = new Group();
         group.setName("Java19");
-        group.setTrainer(getInitialTrainers().get(0));
 
         Group group2 = new Group();
         group2.setName("Java14");
-        group2.setTrainer(getInitialTrainers().get(2));
 
         Group group3 = new Group();
         group3.setName("Java15");
-        group3.setTrainer(getInitialTrainers().get(1));
 
         Group group4 = new Group();
         group4.setName("Java10");
-        group4.setTrainer(getInitialTrainers().get(2));
 
         return List.of(group, group2, group3, group4);
     }
 
-    private static void assignStudentsToGroup(List<Group> groupList) {
+    private static void assignStudentsToGroup(List<Group> groupList, List<Student> studentList) throws MaximumNumberOfStudentsReachedException {
+        LinkedList<Student> studentLinkedList = new LinkedList<>(studentList); // ArrayList to LinkedList conversion
 
+        for (Group group : groupList) {
+            List<Student> students = new ArrayList<>();
+
+            for (int i = 0; i <= 4; i++) {
+                if (students.size() >= MAXIMUM_ALLOWED_STUDENTS) {
+                    throw new MaximumNumberOfStudentsReachedException(group.getName());
+                }
+
+                if (!studentLinkedList.isEmpty()) {
+                    Random random = new Random();
+                    int nextStudentIndex = random.nextInt(studentLinkedList.size()); // Get the Random index
+                    students.add(studentLinkedList.get(nextStudentIndex));
+                    studentLinkedList.remove(nextStudentIndex);
+                }
+            }
+
+            group.setStudents(students);
+        }
+    }
+
+    private static void assignTrainerToGroup(List<Group> groupList, List<Trainer> trainerList) {
+        for (Group group : groupList) {
+            Random random = new Random();
+            int nextTrainerIndex = random.nextInt(trainerList.size()); // Get the Random index
+            group.setTrainer(trainerList.get(nextTrainerIndex));
+        }
     }
 }
